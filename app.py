@@ -21,7 +21,7 @@ migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 
-@app.route('/test')
+@app.route('/')
 def test():
     return "lala"
 
