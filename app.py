@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager, Server
@@ -30,6 +31,12 @@ def test():
 
 # Load Endpoints
 # app.register_blueprint(users, url_prefix='/users')
+#
+# heroku.init_app(app)
+# db.init_app(app)
 
-heroku.init_app(app)
-db.init_app(app)
+
+if __name__ == '__main__':
+    db.create_all()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
