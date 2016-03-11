@@ -11,7 +11,7 @@ from apps.models.company import CompanyModel
 
 
 revision = '2e16030bde45'
-down_revision = '14cb7744656e'
+down_revision = '17d4c5d64a7b'
 
 
 def upgrade():
