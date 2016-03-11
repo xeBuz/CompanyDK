@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask.views import MethodView
 from apps.controllers.base import BaseController
+from apps.models.company import CompanyModel
 
 companies = Blueprint('companies', __name__)
 
