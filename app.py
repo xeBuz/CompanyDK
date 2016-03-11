@@ -29,15 +29,11 @@ def test():
     return "lala"
 
 # Load Controllers
-
+from apps.controllers.company import companies
 
 # Load Endpoints
-# app.register_blueprint(users, url_prefix='/users')
-#
+app.register_blueprint(companies, url_prefix='/companies')
+
+
 heroku.init_app(app)
 db.init_app(app)
-
-#
-# if __name__ == '__main__':
-#     port = int(os.environ.get('PORT', 5000))
-#     app.run(host='0.0.0.0', port=port, debug=True)
