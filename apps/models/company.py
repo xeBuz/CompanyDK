@@ -14,17 +14,17 @@ class CompanyModel(db.Model):
     # directors
     # beneficials
 
-    def save(self):
-        """Add a Company"""
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        """Delete a Company"""
-        db.session.delete(self)
-        db.session.commit()
-
     def __init__(self, name, address, city, country, email=None, phone=None):
+        """
+        Contructor for a new CompanyModel
+
+        :param name:
+        :param address:
+        :param city:
+        :param country:
+        :param email:
+        :param phone:
+        """
         self.name = name
         self.address = address
         self.city = city
@@ -34,3 +34,34 @@ class CompanyModel(db.Model):
 
     def __repr__(self):
         return str(self.id)
+
+    @property
+    def serialize(self):
+        """
+        Serialize the Model for the JSON responses
+
+        :return: JSON
+        """
+        return {
+            'id': self.id,
+            'name': self.name,
+            'address': self.address,
+            'city': self.city,
+            'country': self.country,
+            'email': self.email,
+            'phone': self.phone
+        }
+
+    def save(self):
+        """
+        Add/Save a Company
+        """
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        """
+        Delete a Company
+        """
+        db.session.delete(self)
+        db.session.commit()

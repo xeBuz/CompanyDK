@@ -14,13 +14,25 @@ class CompanyController(MethodView, BaseController):
 
         :param company_id:
         """
-        if company_id is not None:
-            """ lalala """
-            return self.response(200, company_id)
+        company = []
+        pagination = None
+
+        if company_id is None:
+            page = int(request.args.get('page', '1'))
+            count = int(request.args.get('count', '5'))
+
+            pagination = CompanyModel.query.paginate(page, count, False)
+            company = pagination.items
+
+            if len(company) == 0:
+                return self.response(404)
 
         else:
-            """ lalala """
-            return self.response(200)
+            company = CompanyModel.query.filter_by(id=company_id).first()
+            if company is None:
+                return self.response(404)
+
+        return self.response(200, company, pagination)
 
     def post(self):
         """
