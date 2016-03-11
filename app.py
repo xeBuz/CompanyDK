@@ -25,15 +25,13 @@ migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 
-@app.route('/')
-def test():
-    return "lala"
-
 # Load Controllers
 from apps.controllers.company import companies
+from apps.controllers.health import health
 
 # Load Endpoints
 app.register_blueprint(companies, url_prefix='/companies')
+app.register_blueprint(health, url_prefix='/health')
 
 
 heroku.init_app(app)

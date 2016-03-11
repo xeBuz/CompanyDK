@@ -1,64 +1,27 @@
-from flask import Blueprint, request
+import datetime
+import subprocess
+from flask import Blueprint
 from flask.views import MethodView
 from apps.controllers.base import BaseController
 
-# from apps/con
-# from application import application as app
-# from model import PatientsModels
-# from apps.users.model import UsersModels
-# from apps.tokens.model import TokensModels
-# from apps.tokens.controller import login_required
-# from sqlalchemy_elasticquery import elastic_query
-# from utils import get_user, get_clinic, get_doctor
+
+health = Blueprint('health', __name__)
 
 
-companies = Blueprint('companies', __name__)
+class HealthController(MethodView, BaseController):
 
-
-class CompanyController(MethodView, BaseController):
-
-    def get(self, company_id):
+    def get(self):
         """
-        Returns in JSON format one or many Companies
-
-        :param company_id:
+        Returns a JSON with dummy data to test App
         """
-        if company_id is None:
-            """ lalala """
-            return company_id
 
-        else:
-            """ lalala """
-            return "get none"
+        json_response = {
+            'datetime': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'git hash': subprocess.check_output(['git', 'rev-parse', 'HEAD'])
+        }
 
-    def post(self):
-        """
-        Create a new Company
-
-        :return: Code 201
-        """
-        return "post"
-
-    def put(self, company_id):
-        """
-        Edit a Company
-
-        :param company_id:
-        :return: Code 200
-        """
-        return "put"
-
-    def delete(self, company_id):
-        """
-        Delete a Company
-
-        :param company_id:
-        :return:
-        """
-        return "delete"
+        return self.response(200, json_response)
 
 
-companies_view = CompanyController.as_view('companies')
-companies.add_url_rule('', view_func=companies_view, methods=['POST'])
-companies.add_url_rule('', defaults={'company_id': None}, view_func=companies_view, methods=['GET'])
-companies.add_url_rule('/<int:company_id>', view_func=companies_view, methods=['GET', 'PUT', 'DELETE'])
+health_view = HealthController.as_view('health')
+health.add_url_rule('', view_func=health_view, methods=['GET'])
