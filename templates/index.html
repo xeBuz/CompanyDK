@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+	<title>AngularFlask</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/main.css') }}">
+
+    <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-animate.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-cookies.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-local-storage.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-route.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-resource.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-sanitize.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular/angular-touch.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/services.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
+</head>
+<body>
+	<div id="header" class="header navbar navbar-static-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				</button>
+				<a class="brand" href="/">AngularFlask</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-right">
+                        <li class="">
+                            <a href="#/companies">Companies</a>
+                        </li>
+						<li class="">
+							<a href="#/about">About</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container page">
+		<div id="content" class="container main" ng-view>
+		</div>
+
+		<hr>
+		<footer id="footer" class="footer">
+			<div class="footer-left">
+				<a href="/about">About</a> |
+				<a href="/">Home</a>
+			</div>
+
+		</footer>
+	</div>
+</body>
+</html>

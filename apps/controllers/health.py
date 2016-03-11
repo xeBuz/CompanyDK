@@ -1,5 +1,4 @@
 import datetime
-import subprocess
 from flask import Blueprint
 from flask.views import MethodView
 from apps.controllers.base import BaseController
@@ -17,7 +16,6 @@ class HealthController(MethodView, BaseController):
 
         json_response = {
             'datetime': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            # 'git hash': subprocess.check_output(['git', 'rev-parse', 'HEAD'])
         }
 
         return self.response(200, json_response)
