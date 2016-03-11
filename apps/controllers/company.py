@@ -14,7 +14,6 @@ class CompanyController(MethodView, BaseController):
 
         :param company_id:
         """
-        company = []
         pagination = None
 
         if company_id is None:
@@ -40,7 +39,28 @@ class CompanyController(MethodView, BaseController):
 
         :return: Code 201
         """
-        return self.response(201)
+
+        name = request.form.get('name')
+        address = request.form.get('address')
+        city = request.form.get('city')
+        country = request.form.get('country')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+
+        if name is None or address is None or city is None or country is None:
+            self.response(400)
+
+        company = CompanyModel(
+            name=name,
+            address=address,
+            city=city,
+            country=country,
+            email=email,
+            phone=phone
+        )
+
+        company.save()
+        return self.response(201, {'id': company.id})
 
     def put(self, company_id):
         """
@@ -49,7 +69,40 @@ class CompanyController(MethodView, BaseController):
         :param company_id:
         :return: Code 200
         """
-        return self.response(202)
+
+        if company_id is None:
+            return self.response(400)
+
+        company = CompanyModel.query.filter_by(id=company_id).first()
+        if company is None:
+            return self.response(404)
+
+        name = request.form.get('name')
+        if name:
+            company.name = name
+
+        address = request.form.get('address')
+        if address:
+            company.address = address
+
+        city = request.form.get('city')
+        if city:
+            company.city = city
+
+        country = request.form.get('country')
+        if country:
+            company.country = country
+
+        email = request.form.get('email')
+        if email:
+            company.email = email
+
+        phone = request.form.get('phone')
+        if phone:
+            company.phone = phone
+
+        company.save()
+        return self.response(200)
 
     def delete(self, company_id):
         """
@@ -58,8 +111,16 @@ class CompanyController(MethodView, BaseController):
         :param company_id:
         :return:
         """
-        return self.response(204)
 
+        if company_id is None:
+            return self.response(400)
+
+        company = CompanyModel.query.filter_by(id=company_id).first()
+        if company is None:
+            return self.response(404)
+
+        company.delete()
+        return self.response(200)
 
 companies_view = CompanyController.as_view('companies')
 companies.add_url_rule('', view_func=companies_view, methods=['POST'])
