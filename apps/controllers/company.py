@@ -13,13 +13,13 @@ class CompanyController(MethodView, BaseController):
 
         :param company_id:
         """
-        if company_id is None:
+        if company_id is not None:
             """ lalala """
-            return company_id
+            return self.response(200, company_id)
 
         else:
             """ lalala """
-            return "get none"
+            return self.response(200)
 
     def post(self):
         """
@@ -27,7 +27,7 @@ class CompanyController(MethodView, BaseController):
 
         :return: Code 201
         """
-        return "post"
+        return self.response(201)
 
     def put(self, company_id):
         """
@@ -36,7 +36,7 @@ class CompanyController(MethodView, BaseController):
         :param company_id:
         :return: Code 200
         """
-        return "put"
+        return self.response(202)
 
     def delete(self, company_id):
         """
@@ -45,7 +45,7 @@ class CompanyController(MethodView, BaseController):
         :param company_id:
         :return:
         """
-        return "delete"
+        return self.response(204)
 
 
 companies_view = CompanyController.as_view('companies')
