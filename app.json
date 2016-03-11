@@ -1,0 +1,8 @@
+{
+  "name": "CompanyDK",
+  "description": "An example test for full stack developer",
+  "image": "heroku/python",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
