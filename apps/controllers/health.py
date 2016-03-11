@@ -17,7 +17,7 @@ class HealthController(MethodView, BaseController):
 
         json_response = {
             'datetime': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            'git hash': subprocess.check_output(['git', 'rev-parse', 'HEAD'])
+            # 'git hash': subprocess.check_output(['git', 'rev-parse', 'HEAD'])
         }
 
         return self.response(200, json_response)
