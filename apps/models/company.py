@@ -8,6 +8,7 @@ class CompanyModel(db.Model):
     name = db.Column(db.String(125))
     address = db.Column(db.String(125))
     city = db.Column(db.String(125))
+    country = db.Column(db.String(125))
     email = db.Column(db.String(125))
     phone = db.Column(db.String(25))
     # directors
@@ -23,12 +24,13 @@ class CompanyModel(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def __init__(self, name, email, address, city, phone):
+    def __init__(self, name, address, city, country, email=None, phone=None):
         self.name = name
+        self.address = address
+        self.city = city
+        self.country = country
         self.email = email
         self.phone = phone
-        self.city = city
-        self.address = address
 
     def __repr__(self):
-        return self.id
+        return str(self.id)

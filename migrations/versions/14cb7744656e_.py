@@ -5,12 +5,11 @@ Revises: None
 Create Date: 2016-03-10 21:25:07.056290
 
 """
+from alembic import op
+import sqlalchemy as sa
 
 revision = '14cb7744656e'
 down_revision = None
-
-from alembic import op
-import sqlalchemy as sa
 
 
 def upgrade():
