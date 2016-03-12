@@ -12,24 +12,17 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/main.css') }}">
 
-    <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="{{ url_for('static', filename='lib/angular-animate/angular-animate.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/angular-animate/angular-animate.min.js.') }}"></script>
+    <script src="{{ url_for('static', filename='lib/angular-animate/angular-animate.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/angular-cookies/angular-cookies.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/angular-local-storage/dist/angular-local-storage.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/angular-resource/angular-resource.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/angular-route/angular-route.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/angular-sanitize/angular-sanitize.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/angular-touch/angular-touch.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.min.js') }}"></script>
+{#    <script src="{{ url_for('static', filename='lib/bootstrap/bootstrap.min.js') }}"></script>#}
     <script src="{{ url_for('static', filename='lib/jquery/jquery.js') }}"></script>
-{#    <script src="{{ url_for('static', filename='') }}"></script>#}
-{#    <script src="{{ url_for('static', filename='') }}"></script>#}
-{#    <script src="{{ url_for('static', filename='') }}"></script>#}
-{#    <script src="{{ url_for('static', filename='') }}"></script>#}
-{#    <script src="{{ url_for('static', filename='') }}"></script>#}
-{#    <script src="{{ url_for('static', filename='') }}"></script>#}
-{#    <script src="{{ url_for('static', filename='') }}"></script>  #}
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src="{{ url_for('static', filename='js/controllers.js') }}"></script>
@@ -57,11 +50,16 @@
 		</div>
 	</div>
 
-	<div class="container page">
-		<div id="content" class="container main" ng-view>
-		</div>
 
-		<hr>
+    <div class="container page">
+        <div ng-view=""></div>
+    </div>
+
+{#	<div class="container page">#}
+{#		<div id="content" class="container main" ng-view>#}
+{#		</div>#}
+{##}
+{#		<hr>#}
 {#		<footer id="footer" class="footer">#}
 {#			<div class="footer-left">#}
 {#				<a href="/about">About</a> |#}
@@ -69,6 +67,6 @@
 {#			</div>#}
 {##}
 {#		</footer>#}
-	</div>
+{#	</div>#}
 </body>
 </html>

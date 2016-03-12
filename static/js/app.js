@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name ordbogenFrontendApp
+ * @name CompanyDK
  * @description
- * # ordbogenFrontendApp
+ * # CompanyDKApp
  *
  * Main module of the application.
  */
@@ -19,13 +19,6 @@ angular
     'LocalStorageModule',
     'API'
   ])
-  .config(function ($httpProvider) {
-    $httpProvider.defaults.useXDomain = false;
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-    $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
-
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-  })
   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   	$routeProvider
   	  .when('/', {
@@ -36,11 +29,11 @@ angular
   	  	templateUrl: 'static/partials/about.html',
   	  	controller: AboutController
   	  })
-  	  .when('/companies', {
+  	  .when('/companies/', {
   	  	templateUrl: 'static/partials/companies.html',
   	  	controller: CompaniesController
   	  })
-  	  .when('/company/:postId', {
+  	  .when('/company/:id', {
   	  	templateUrl: '/static/partials/company-detail.html',
   	  	controller: CompanyDetailController
   	  })
@@ -48,4 +41,16 @@ angular
   	  	redirectTo: '/'
   	  })
   	;
-  	$locationProvider.html5Mode(true);  }]);
+  	$locationProvider.html5Mode(true);
+  }])
+;
+
+
+
+  //.config(function ($httpProvider) {
+  //  $httpProvider.defaults.useXDomain = false;
+  //  $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+  //  $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
+  //
+  //  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  //})
