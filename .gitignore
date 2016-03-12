@@ -63,3 +63,10 @@ target/
 venv/
 __pycache__/
 .idea/
+
+ignore
+*.map
+*.min.js
+*i18n
+*/docs/
+static/lib/*
