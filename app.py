@@ -26,14 +26,12 @@ manager.add_command('db', MigrateCommand)
 
 
 # Load Controllers
-from apps.controllers.company import companies
-from apps.controllers.health import health
-from apps.controllers.frontend import frontend
+from api.controllers.company import companies
+from api.controllers.health import health
 
 # Load Endpoints
-app.register_blueprint(companies, url_prefix='/companies')
-app.register_blueprint(frontend, url_prefix='/')
-app.register_blueprint(health, url_prefix='/health')
+app.register_blueprint(companies, url_prefix='/api/companies')
+app.register_blueprint(health, url_prefix='/api/health')
 
 
 heroku.init_app(app)

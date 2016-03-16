@@ -7,7 +7,7 @@ Create Date: 2016-03-10 21:33:14.544867
 """
 # from alembic import op
 # import sqlalchemy as sa
-from apps.models.company import CompanyModel
+from api.models.company import CompanyModel
 
 
 revision = '2e16030bde45'

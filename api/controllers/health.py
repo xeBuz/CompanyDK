@@ -1,7 +1,7 @@
 import datetime
 from flask import Blueprint
 from flask.views import MethodView
-from apps.controllers.base import BaseController
+from api.controllers.base import BaseController
 
 
 health = Blueprint('health', __name__)
