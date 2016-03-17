@@ -1,3 +1,3 @@
-web: python server.py db upgrade
-worker: python server.py runserver
+worker: python server.py db upgrade
+web: python server.py runserver
 web: node web.js
