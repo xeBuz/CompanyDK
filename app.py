@@ -16,6 +16,7 @@ manager.add_command("runserver", Server(
     use_debugger=True,
     use_reloader=True)
 )
+
 heroku = Heroku()
 
 app.config.from_object('config.Development')
