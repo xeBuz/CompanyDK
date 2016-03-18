@@ -1,1 +1,40 @@
-<h3>LIST</h3>
+<h3>Company List</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive" ng-if="companyList">
+                <table class="table table-hover table-striped" id="table-company">
+                    <thead>
+                        <tr>
+                            <td class="id">ID</td>
+                            <td class="name">Name</td>
+                            <td class="address">Address</td>
+                            <td class="city">City</td>
+                            <td class="country">Country</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in companyList">
+                            <td class="id"> {{ item.id }} </td>
+                            <td class="name"> {{ item.name }}</td>
+                            <td class="address"> {{ item.address }}</td>
+                            <td class="city"> {{ item.city }}</td>
+                            <td class="country"> {{ item.country }}</td>
+                            <!-- <td class="link"> <a ng-href="#/country/code/{{ item.iso_code }}"> <span class="glyphicon glyphicon-globe"></span></a></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="button" ng-click="prevPage()" class="btn" ng-if="hasPrev">
+                    <span class="glyphicon glyphicon-triangle-left"></span>  Prev
+                </button>
+
+                <button type="button" ng-click="nextPage()" class="btn pull-right" ng-if="hasNext">
+                    Next <span class="glyphicon glyphicon-triangle-right"></span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
