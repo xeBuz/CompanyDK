@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in companyList">
+                        <tr ng-repeat="item in companyList" ng-click="openCompany(item)">
                             <td class="id"> {{ item.id }} </td>
                             <td class="name"> {{ item.name }}</td>
                             <td class="address"> {{ item.address }}</td>

@@ -18,7 +18,6 @@ angular.module('companyDkApp')
         $scope.hasNext = null;
         $scope.hasPrev = null;
 
-
         var getCompanies = function() {
             $http(
                 {
@@ -38,17 +37,20 @@ angular.module('companyDkApp')
             });
         };
 
+        $scope.openCompany = function(company) {
+            console.log(company);
+            console.log(company.id);
+        };
+
         $scope.nextPage = function() {
             $scope.page++;
             getCompanies();
-        }
+        };
 
         $scope.prevPage = function() {
             $scope.page--;
             getCompanies();
-        }
-
+        };
 
         getCompanies();
-
 }]);
