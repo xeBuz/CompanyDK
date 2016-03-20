@@ -30,9 +30,11 @@ manager.add_command('db', MigrateCommand)
 # Load Controllers
 from api.controllers.company import companies
 from api.controllers.health import health
+from api.controllers.owner import owners
 
 # Load Endpoints
 app.register_blueprint(companies, url_prefix='/api/companies')
+app.register_blueprint(owners, url_prefix='/api/owners')
 app.register_blueprint(health, url_prefix='/api/health')
 
 
