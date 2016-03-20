@@ -8,7 +8,7 @@
  * Controller of the companyDkApp
  */
 angular.module('companyDkApp')
-  .controller('NewCtrl', ['$scope', '$http', function($scope, $http) {
+  .controller('NewCtrl', ['$scope', '$http', 'Flash', function($scope, $http, Flash) {
         $scope.country = {};
         $scope.pageTitle = "New Company";
         $scope.buttonText = "Add";
@@ -36,10 +36,15 @@ angular.module('companyDkApp')
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 })
             .then(function(response) {
-                if (response.status == 201){
-                    console.log("SUCCESS");
+                if (response.status === 201){
+                    $scope.successAlert();
                 }
             });
+        };
+
+        $scope.successAlert = function () {
+            var message = '<strong>Well done!</strong> The new Company was created';
+            var id = Flash.create('success', message, 0, {class: 'alert', id: 'alert'}, true);
         };
 
         $scope.save = function() {
