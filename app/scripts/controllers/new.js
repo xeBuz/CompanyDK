@@ -28,7 +28,6 @@ angular.module('companyDkApp')
         };
 
         var saveCompany = function(data) {
-            console.log(data);
             $http(
                 {
                     method: 'POST',

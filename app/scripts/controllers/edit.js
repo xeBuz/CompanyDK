@@ -8,7 +8,7 @@
  * Controller of the companyDkApp
  */
 angular.module('companyDkApp')
-  .controller('EditCtrl', ['$scope', '$http', 'Flash', '$routeParams', function($scope, $http, Flash, $routeParams) {
+  .controller('EditCtrl', ['$scope', '$http', 'Flash', '$routeParams', '$location', function($scope, $http, Flash, $routeParams, $location) {
         $scope.country = {};
         $scope.pageTitle = "Company ID: " + $routeParams.id;
         $scope.buttonText = "Edit";
@@ -27,7 +27,7 @@ angular.module('companyDkApp')
             };
         };
 
-        var saveCompany = function(data) {
+        var editCompany = function(data) {
             $http(
                 {
                     method: 'PUT',
@@ -42,7 +42,7 @@ angular.module('companyDkApp')
             });
         };
 
-        var deleteCompany = function(data) {
+        var deleteCompany = function() {
             $http(
                 {
                     method: 'DELETE',
@@ -60,33 +60,34 @@ angular.module('companyDkApp')
                 {
                     method: 'GET',
                     url: $scope.url,
-                    params: {
-                        page:  $scope.page,
-                        count: $scope.count
-                    }
                 })
             .then(function(response){
                 $scope.company = response.data.data;
+            }, function errorCallback(response) {
+
+                if (response.status === 404) {
+                    $location.path('404');
+                }
             });
-        }
+        };
 
         $scope.successAlert = function () {
             var message = '<strong>Well done!</strong> The Company was modified';
-            var id = Flash.create('success', message, 0, {class: 'alert', id: 'alert'}, true);
+            Flash.create('success', message, 0, {class: 'alert', id: 'alert'}, true);
         };
 
         $scope.deleteAlert = function () {
             var message = '<strong>Bye bye!</strong> The Company was deleted';
-            var id = Flash.create('danger', message, 0, {class: 'alert', id: 'alert'}, true);
+            Flash.create('danger', message, 0, {class: 'alert', id: 'alert'}, true);
         };
 
         $scope.save = function() {
             var data = buildData();
-            saveCompany(data);
+            editCompany(data);
         };
 
         $scope.delete = function() {
-            deleteCompany($routeParams.id);
+            deleteCompany();
         };
 
         loadCompany();

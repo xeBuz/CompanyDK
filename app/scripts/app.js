@@ -26,6 +26,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/404', {
+        templateUrl: '404.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
       .when('/list', {
         templateUrl: 'views/list.html',
         controller: 'ListCtrl',
@@ -42,7 +47,7 @@ angular
         controllerAs: 'edit'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/404'
       });
   })
   .config(function ($httpProvider) {
