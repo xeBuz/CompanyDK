@@ -11,8 +11,6 @@ class CompanyModel(db.Model):
     country = db.Column(db.String(125))
     email = db.Column(db.String(125))
     phone = db.Column(db.String(25))
-    # directors
-    # beneficials
 
     def __init__(self, name, address, city, country, email=None, phone=None):
         """
