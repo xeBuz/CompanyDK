@@ -87,7 +87,7 @@ class BaseController(object):
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT'
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
         }
 
     def response(self, code=200, data=None, pagination=None):
