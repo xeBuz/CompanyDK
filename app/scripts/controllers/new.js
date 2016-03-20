@@ -12,6 +12,7 @@ angular.module('companyDkApp')
         $scope.country = {};
         $scope.pageTitle = "New Company";
         $scope.buttonText = "Add";
+        $scope.showDelete = false;
 
         $scope.url = 'http://0.0.0.0:5000/api/companies';
 

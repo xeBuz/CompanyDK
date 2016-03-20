@@ -8,7 +8,7 @@
  * Controller of the companyDkApp
  */
 angular.module('companyDkApp')
-  .controller('ListCtrl', ['$scope', '$http', function($scope, $http) {
+  .controller('ListCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
         $scope.companyList = [];
         $scope.url = 'http://0.0.0.0:5000/api/companies';
@@ -38,8 +38,7 @@ angular.module('companyDkApp')
         };
 
         $scope.openCompany = function(company) {
-            console.log(company);
-            console.log(company.id);
+            $location.path('/edit/' + company.id);
         };
 
         $scope.nextPage = function() {
